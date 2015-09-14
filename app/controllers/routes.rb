@@ -11,9 +11,9 @@ end
 
 #creates a route
 post '/routes' do
-  params[:route][:creator_id] = session[:user_id]
   @route = Route.create(params[:route])
   if @route.save
+    Event.create(participant_id: session[:user_id], route_id: @route.id, host: true)
     redirect '/routes'
   else
     @errors = @route.errors.full_messages
@@ -24,9 +24,11 @@ end
 #individual route info
 get '/routes/:route_id' do
   @route = Route.find(params[:route_id])
+  @events = Event.where(route_id: params[:route_id])
   erb :'routes/info'
 end
 
+#deletes the route
 delete '/routes/:route_id' do
   @route = Route.find(params[:route_id])
   @route.destroy

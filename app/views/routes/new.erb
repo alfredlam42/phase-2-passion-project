@@ -8,5 +8,6 @@
   <input name='route[date]' type='date'></p>
   <p><label for='route[start_time]'>Start Time:</label>
   <input name='route[start_time]' type='time'></p>
+  <input type='hidden' name='route[creator_id]' value='<%= session[:user_id] %>'>
   <input type='submit' value='Create Run'>
 </form>

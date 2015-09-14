@@ -6,13 +6,28 @@
 
 <% if same_user?(@route.creator_id) %>
   <p>
-    <form method='post' action='/routes/<%= @route.id %>'>
+    <form method='post' action='/event/<%= @route.id %>'>
       <input type='hidden' name='_method' value='delete'>
       <input type='submit' value='Cancel Event'>
     </form>
   </p>
-<% else %>
+<% elsif is_participant?(@route.id) %>
   <p>
-    Join!
+    <form method='post' action='/events/<%= @route.id %>'>
+      <input type='hidden' name='_method' value='delete'>
+      <input type='submit' value='Changed My Mind'>
+    </form>
+  </p>
+<% elsif is_authenticated? %>
+  <p>
+    <form method='post' action='/events/<%= @route.id %>'>
+      <input type='submit' value='Join!'>
+    </form>
   </p>
 <% end %>
+
+<p><h1>Participants</h1></p>
+<% @events.each do |event| %>
+  <p><%= User.find(event.participant_id).user_name %></p>
+<% end %>
+
