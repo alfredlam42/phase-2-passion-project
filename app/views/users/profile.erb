@@ -1,5 +1,13 @@
 <% if is_authenticated?%>
   <h1><%= @user.user_name %></h1>
+  <h3>Events Hosted</h3>
+  <% @user.created_routes.each do |route| %>
+    <p><a href='/routes/<%= route.id %>'>Route <%= route.id %></a></p>
+  <% end %>
+  <h3>Events Participated</h3>
+  <% @user.running_routes.each do |route| %>
+    <p><a href='/routes/<%= route.id %>'>Route <%=route.id %></a></p>
+  <% end %>
 <% else %>
   <% redirect '/' %>
 <% end %>
