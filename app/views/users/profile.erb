@@ -1,0 +1,5 @@
+<% if is_authenticated?%>
+  <h1><%= @user.user_name %></h1>
+<% else %>
+  <% redirect '/' %>
+<% end %>

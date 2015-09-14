@@ -1,0 +1,20 @@
+<% if @errors %>
+  <%=@errors[0]%>
+<%end%>
+
+
+<h2>Register for our site</h2>
+
+<form method="post" action="/users">
+  <label for='user[user_name]'>User Name:</label>
+  <input name='user[user_name]' type='text'>
+  <p><label for='user[password]'>Password:</label>
+  <input name='user[password]' type='password'></p>
+  <p><label for='user[email]'>Email:</label>
+  <input name='user[email]' type='text'></p>
+  <p><label for='user[city]'>City:</label>
+  <input name='user[city]' type='text'></p>
+  <p><label for='user[state]'>State:</label>
+  <input name='user[state]' type='text'></p>
+  <input type='submit' value='Create Account'>
+</form>

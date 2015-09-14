@@ -1,0 +1,13 @@
+<h2>Login</h2>
+<% if @errors %>
+  <p><%=@errors%></p>
+<%end%>
+
+<form method="post" action="/users/login">
+  <label for='user_name'>User Name:</label>
+  <input name='user_name' type='text'>
+  <label for='password'>Password:</label>
+  <input name='password' type='password'>
+
+  <input type='submit' value='Login'>
+</form>

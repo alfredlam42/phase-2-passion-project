@@ -1,0 +1,18 @@
+<h1>Info for Route <%= @route.id %></h1>
+<p>Host: <%= User.find(@route.creator_id).user_name %></p>
+<p>Date: <%= @route.date %></p>
+<p>Time: <%= @route.start_time %></p>
+<p>Start Location: <%= @route.start_location %></p>
+
+<% if same_user?(@route.creator_id) %>
+  <p>
+    <form method='post' action='/routes/<%= @route.id %>'>
+      <input type='hidden' name='_method' value='delete'>
+      <input type='submit' value='Cancel Event'>
+    </form>
+  </p>
+<% else %>
+  <p>
+    Join!
+  </p>
+<% end %>
