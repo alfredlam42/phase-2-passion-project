@@ -6,21 +6,23 @@
 
 <% if same_user?(@route.creator_id) %>
   <p>
-    <form method='post' action='/event/<%= @route.id %>'>
+    <form method='post' action='/routes/<%= @route.id %>'>
       <input type='hidden' name='_method' value='delete'>
       <input type='submit' value='Cancel Event'>
     </form>
   </p>
 <% elsif is_participant?(@route.id) %>
   <p>
-    <form method='post' action='/events/<%= @route.id %>'>
+    <form method='post' action='/events'>
       <input type='hidden' name='_method' value='delete'>
+      <input type='hidden' name='route_id' value='<%= @route.id %>'>
       <input type='submit' value='Changed My Mind'>
     </form>
   </p>
 <% elsif is_authenticated? %>
   <p>
-    <form method='post' action='/events/<%= @route.id %>'>
+    <form method='post' action='/events'>
+      <input type='hidden' name='route_id' value='<%= @route.id %>'>
       <input type='submit' value='Join!'>
     </form>
   </p>
