@@ -1,5 +1,13 @@
-Here are all the routes!
+<div>Here are all the routes!</div>
 
-<% @routes.each do |route| %>
-  <p><a href='/routes/<%= route.id %>'>Route <%= route.id %></a></p>
-<% end %>
+<div id='event-container'>
+  <% @routes.each do |route| %>
+    <div class='event'>
+      <div><h5>Info for Route <%= route.id %></h5></div>
+      <div>Host: <%= User.find(route.creator_id).user_name %></div>
+      <div>Date: <%= route.date %></div>
+      <div>Time: <%= route.start_time %></div>
+      <div>Start Location: <%= route.start_location %></div>
+    </div>
+  <% end %>
+</div>
