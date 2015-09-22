@@ -11,12 +11,12 @@ end
 
 #creates a route
 post '/routes' do
-  @route = Route.create(params[:route])
-  if @route.save
-    Event.create(participant_id: session[:user_id], route_id: @route.id, host: true)
+  route = Route.create(params[:route])
+  if route.save
+    Rsvp.create(participant_id: session[:user_id], route_id: route.id)
     redirect '/routes'
   else
-    @errors = @route.errors.full_messages
+    @errors = route.errors.full_messages
     erb :'/routes/new'
   end
 end
@@ -24,7 +24,7 @@ end
 #individual route info
 get '/routes/:route_id' do
   @route = Route.find(params[:route_id])
-  @events = Event.where(route_id: params[:route_id])
+  @rsvps = Rsvp.where(route_id: params[:route_id])
   erb :'routes/info'
 end
 

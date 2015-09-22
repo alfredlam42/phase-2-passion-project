@@ -1,27 +1,30 @@
 require 'faker'
 
 User.delete_all
-Channel.delete_all
-Subscription.delete_all
+Rsvp.delete_all
+Route.delete_all
 
-users = 100.times.map do
-  User.create!( :first_name => Faker::Name.first_name,
-                :last_name  => Faker::Name.last_name,
+users = 20.times.map do
+  User.create!( :user_name => Faker::Name.first_name,
                 :email      => Faker::Internet.email,
-                :password   => 'password' )
+                :hashed_password   => 'password',
+                :city => Faker::Address.city,
+                :state => Faker::Address.state_abbr )
 end
 
-channels = ["Telemundo", "Unimas ", "Azteca 13", "Mexiquense",
- "ESPN", "Fox Sports", "NBC Sports", "Big Ten Network", "Nickelodeon"].map do |name|
-  Channel.create!(:name            => name,
-                  :callsign        => name[0..2].upcase,
-                  :price_per_month => Faker::Commerce.price)
+routes = 20.times.map do
+  Route.create!(  :start_location_address => Faker::Address.street_address,
+                  :start_location_city => Faker::Address.city,
+                  :start_location_state => Faker::Address.state_abbr,
+                  :distance => Faker::Number.between(1, 26),
+                  :title => Faker::Team.creature,
+                  :pace => Faker::Number.between(4, 12),
+                  :date => Faker::Date.forward(30),
+                  :start_time => "08:00",
+                  :creator_id => Faker::Number.between(1,20) )
 end
 
-users.each do |user|
-  user_channels = channels.sample(rand(2..4))
-  user_channels.each do |channel|
-    Subscription.create!(user: user,
-                         channel: channel)
-  end
+rsvps = 50.times.map do
+  Rsvp.create!(   :participant_id => Faker::Number.between(1,21),
+                  :route_id => Faker::Number.between(1, 20) )
 end

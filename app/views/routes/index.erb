@@ -3,11 +3,13 @@
 <div id='event-container'>
   <% @routes.each do |route| %>
     <div class='event'>
-      <div><h5>Info for Route <%= route.id %></h5></div>
+      <div><h5><%= route.title %></h5></div>
       <div>Host: <%= User.find(route.creator_id).user_name %></div>
       <div>Date: <%= route.date %></div>
       <div>Time: <%= route.start_time %></div>
-      <div>Start Location: <%= route.start_location %></div>
+      <div>Start Location: <%= route.start_location_address %>, <%= route.start_location_city %> <%= route.start_location_state %></div>
+      <div>Distance: <%= route.distance %></div>
+      <div>Pace: <%= route.pace %></div>
     </div>
   <% end %>
 </div>

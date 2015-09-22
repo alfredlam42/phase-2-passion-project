@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :events, foreign_key: 'participant_id'
+  has_many :rsvps, foreign_key: 'participant_id'
   has_many :created_routes, class_name:'Route', foreign_key: 'creator_id'
-  has_many :running_routes, through: :events, source: :route
+  has_many :running_routes, through: :rsvps, source: :route
 
   validates :email, presence: true, uniqueness: true
   validates :user_name, presence: true, uniqueness: true

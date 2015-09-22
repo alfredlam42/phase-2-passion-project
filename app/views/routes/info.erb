@@ -2,7 +2,7 @@
 <p>Host: <%= User.find(@route.creator_id).user_name %></p>
 <p>Date: <%= @route.date %></p>
 <p>Time: <%= @route.start_time %></p>
-<p>Start Location: <%= @route.start_location %></p>
+<p>Starting Location: <%= @route.start_location_address %>, <%= @route.start_location_city %> <%= @route.start_location_state %></p>
 
 <% if same_user?(@route.creator_id) %>
   <p>
@@ -13,7 +13,7 @@
   </p>
 <% elsif is_participant?(@route.id) %>
   <p>
-    <form method='post' action='/events'>
+    <form method='post' action='/rsvps'>
       <input type='hidden' name='_method' value='delete'>
       <input type='hidden' name='route_id' value='<%= @route.id %>'>
       <input type='submit' value='Changed My Mind'>
@@ -21,7 +21,7 @@
   </p>
 <% elsif is_authenticated? %>
   <p>
-    <form method='post' action='/events'>
+    <form method='post' action='/rsvps'>
       <input type='hidden' name='route_id' value='<%= @route.id %>'>
       <input type='submit' value='Join!'>
     </form>
@@ -29,7 +29,7 @@
 <% end %>
 
 <p><h1>Participants</h1></p>
-<% @events.each do |event| %>
-  <p><%= User.find(event.participant_id).user_name %></p>
+<% @rsvps.each do |rsvp| %>
+  <p><%= User.find(rsvp.participant_id).user_name %></p>
 <% end %>
 
