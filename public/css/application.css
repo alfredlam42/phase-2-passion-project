@@ -68,3 +68,39 @@ form.quirks {
   width: 100%;
   height: 5em;
 }
+
+.participants{
+  width: 8em;
+  text-align: center;
+}
+
+.event_title{
+  width: 25em;
+  padding-left: 1em;
+}
+
+.host{
+  width: 10em;
+  padding-left: 1em;
+}
+
+.location{
+  width: 15em;
+  padding-left: 1em;
+
+}
+
+.date{
+  width: 8em;
+  padding-left: 1em;
+
+}
+
+#table-center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.event-info{
+/*  height: 200px;*/
+}

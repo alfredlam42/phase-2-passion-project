@@ -1,15 +1,22 @@
-<div>Here are all the routes!</div>
-
 <div id='event-container'>
-  <% @routes.each do |route| %>
-    <div class='event'>
-      <div><h5><%= route.title %></h5></div>
-      <div>Host: <%= User.find(route.creator_id).user_name %></div>
-      <div>Date: <%= route.date %></div>
-      <div>Time: <%= route.start_time %></div>
-      <div>Start Location: <%= route.start_location_address %>, <%= route.start_location_city %> <%= route.start_location_state %></div>
-      <div>Distance: <%= route.distance %></div>
-      <div>Pace: <%= route.pace %></div>
-    </div>
-  <% end %>
+
+  <table class='table'>
+    <tr>
+      <th class='participants'> Participants </th>
+      <th class='event_title'> Event </th>
+      <th class='host'> Host </th>
+      <th class='location'> Location </th>
+      <th class='date'> Date </th>
+    </tr>
+
+    <% @routes.each do |route| %>
+      <tr id='event<%= route.id %>'>
+        <td class='participants'><%= route.participants.count %></td>
+        <td class='event_title'><a href='/routes/<%= route.id %>'><%= route.title %></a></td>
+        <td class='host'><a href='/users/<%= route.creator.id %>'><%= route.creator.user_name %></a></td>
+        <td class='location'><%= route.start_location_city %>, <%= route.start_location_state %></td>
+        <td class='date'><%= route.date %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

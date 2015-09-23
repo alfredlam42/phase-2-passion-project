@@ -25,7 +25,12 @@ end
 get '/routes/:route_id' do
   @route = Route.find(params[:route_id])
   @rsvps = Rsvp.where(route_id: params[:route_id])
-  erb :'routes/info'
+
+  if request.xhr?
+    erb :'/routes/_info', layout: false
+  else
+    erb :'/routes/info'
+  end
 end
 
 #deletes the route
