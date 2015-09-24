@@ -13,6 +13,7 @@ $(document).ready(function () {
     })
 
     .done(function(response){
+      $('#' + id_name + ' .event-info').remove();
       $('#' + id_name).append(response);
     });
   });

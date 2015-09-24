@@ -1,6 +1,6 @@
 #see all routes
 get '/routes' do
-  @routes = Route.order(date: :asc)
+  @routes = Route.order(start_location_state: :asc)
   erb :'/routes/index'
 end
 
