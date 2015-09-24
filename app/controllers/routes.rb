@@ -37,5 +37,10 @@ end
 delete '/routes/:route_id' do
   @route = Route.find(params[:route_id])
   @route.destroy
-  redirect '/routes'
+
+  if request.xhr?
+    {id: params[:route_id], delete_route: true}.to_json
+  else
+    redirect '/routes'
+  end
 end

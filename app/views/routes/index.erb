@@ -8,15 +8,15 @@
       <div class='date event-row'>Start Date</div>
     </div>
     <% @routes.each do |route| %>
-      <div id='event<%= route.id %>'>
-        <div>
-          <div class='participants event-row'><%= route.participants.count %></div>
-          <div class='event event-row'><a href='/routes/<%= route.id %>'><%= route.title %></a></div>
-          <div class='host event-row'><a href='/users/<%= route.creator.id %>'><%= route.creator.user_name %></a></div>
-          <div class='location event-row'><%= route.start_location_city %>, <%= route.start_location_state %></div>
-          <div class='date event-row'><%= route.date %></div>
-        </div>
+    <div id='event<%= route.id %>'>
+      <div>
+        <div class='participants event-row'><%= route.participants.count %></div>
+        <div class='event event-row'><a href='/routes/<%= route.id %>'><%= route.title %></a></div>
+        <div class='host event-row'><a href='/users/<%= route.creator.id %>'><%= route.creator.user_name %></a></div>
+        <div class='location event-row'><%= route.start_location_city %>, <%= route.start_location_state %></div>
+        <div class='date event-row'><%= route.date %></div>
       </div>
+    </div>
     <% end %>
   </div>
 </div>

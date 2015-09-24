@@ -1,4 +1,27 @@
 <div class='event-info'>
   <p>Meet up at <%= @route.start_location_address %> at <%= @route.start_time %>.</p>
   <p>We're running <%= @route.distance %> miles going at a <%= @route.pace %> minute mile pace.</p>
+
+  <% if same_user?(@route.creator_id) %>
+    <p>
+      <form method='delete' action='/routes/<%= @route.id %>'>
+        <input type='submit' value='Cancel Event'>
+      </form>
+    </p>
+  <% elsif is_participant?(@route.id) %>
+    <p>
+      <form method='post' action='/rsvps'>
+        <input type='hidden' name='_method' value='delete'>
+        <input type='hidden' name='route_id' value='<%= @route.id %>'>
+        <input type='submit' value='Changed My Mind'>
+      </form>
+    </p>
+  <% elsif is_authenticated? %>
+    <p>
+      <form method='post' action='/rsvps'>
+        <input type='hidden' name='route_id' value='<%= @route.id %>'>
+        <input type='submit' value='Join!'>
+      </form>
+    </p>
+  <% end %>
 </div>

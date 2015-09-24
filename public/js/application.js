@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     var path = $(this).attr('href'),
         id_name = $(this).parents().eq(2).attr('id');
-    console.log(id_name);
 
     $.ajax({
       method: 'GET',
@@ -15,6 +14,35 @@ $(document).ready(function () {
     .done(function(response){
       $('#' + id_name + ' .event-info').remove();
       $('#' + id_name).append(response);
+    });
+  });
+
+  $('div[id^="event"] div').on('submit', 'form', function(event){
+    event.preventDefault();
+
+    var path = $(this).attr('action'),
+        method = $(this).attr('method'),
+        data = $(this).serialize();
+
+        console.log(path);
+        console.log(method);
+        console.log(data);
+
+    $.ajax({
+      method: method,
+      url: path,
+      data: data,
+      dataType: 'json'
+    })
+
+    .done(function(response){
+      if (response.delete_route){
+        $('#event' + response.id).remove();
+      }
+      else{
+        $('#event' + response.id + ' .participants').html(response.participants);
+        $('#event' + response.id + ' .event-info').remove();
+      }
     });
   });
 });
