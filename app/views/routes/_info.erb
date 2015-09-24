@@ -1,25 +1,3 @@
-<tr class='event-info-<%= @route.id %>'>
-  <td class='participants'>
-    <% if same_user?(@route.creator_id) %>
-      <form class='rsvp-form' method='post' action='/routes/<%= @route.id %>'>
-        <input type='hidden' name='_method' value='delete'>
-        <input class='event-button' type='submit' value='Cancel Event'>
-      </form>
-    <% elsif is_participant?(@route.id) %>
-      <form class='rsvp-form' method='post' action='/rsvps'>
-        <input type='hidden' name='_method' value='delete'>
-        <input class='rsvp-value' type='hidden' name='route_id' value='<%= @route.id %>'>
-        <input class='event-button' type='submit' value='Changed My Mind'>
-      </form>
-    <% elsif is_authenticated? %>
-      <form class='rsvp-form' method='post' action='/rsvps'>
-        <input class='rsvp-value' type='hidden' name='route_id' value='<%= @route.id %>'>
-        <input class='event-button' type='submit' value='Join!'>
-      </form>
-    <% end %>
-  </td>
-  <td class='event_title'></td>
-  <td class='host'>Pace: <%= @route.pace %></td>
-  <td class='location'><%= @route.start_location_address %></td>
-  <td class='date'>Start: <%= @route.start_time %></td>
-</tr>
+<div>
+a;oghvo;esdhgoi
+</div>

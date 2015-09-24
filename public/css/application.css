@@ -55,14 +55,6 @@ form.quirks {
   width: 200px;
 }
 
-.event {
-  display: inline-block;
-  width: 12em;
-  margin: 1em;
-  border: 1px solid black;
-  padding: 1em;
-}
-
 #banner{
   background-color: orange;
   width: 100%;
@@ -70,37 +62,54 @@ form.quirks {
 }
 
 .participants{
-  width: 8em;
-  text-align: center;
+  display: inline-block;
+  /*border: 1px solid black;*/
+  width: 6em;
 }
 
-.event_title{
-  width: 25em;
-  padding-left: 1em;
+.event{
+  display: inline-block;
+  /*border: 1px solid black;*/
+  width: 26em;
+  text-align: left
 }
 
 .host{
-  width: 10em;
-  padding-left: 1em;
+  width: 8em;
+  display: inline-block;
+  text-align: left;
 }
 
 .location{
-  width: 15em;
-  padding-left: 1em;
-
+  width: 12em;
+  /*border: 1px solid black;*/
+  display: inline-block;
+  text-align: left;
 }
 
 .date{
   width: 8em;
-  padding-left: 1em;
-
+  display: inline-block;
+  text-align: left;
 }
 
-#table-center{
-  margin-left: auto;
-  margin-right: auto;
+#event-container{
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 3em;
+  /*border: 1px solid black;*/
+  text-align:
 }
 
-.event-info{
-/*  height: 200px;*/
+#centering{
+  text-align: center;
+}
+
+.event-row{
+  padding-top: 1em;
+}
+
+#test{
+  display: inline-block;
 }
