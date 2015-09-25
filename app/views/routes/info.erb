@@ -4,6 +4,8 @@
 <p>Time: <%= @route.start_time %></p>
 <p>Starting Location: <%= @route.start_location_address %>, <%= @route.start_location_city %> <%= @route.start_location_state %></p>
 
+<div id="googleMap" style="width:500px;height:380px;"></div>
+
 <% if same_user?(@route.creator_id) %>
   <p>
     <form method='post' action='/routes/<%= @route.id %>'>

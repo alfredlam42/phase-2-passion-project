@@ -24,10 +24,6 @@ $(document).ready(function () {
         method = $(this).attr('method'),
         data = $(this).serialize();
 
-        console.log(path);
-        console.log(method);
-        console.log(data);
-
     $.ajax({
       method: method,
       url: path,
